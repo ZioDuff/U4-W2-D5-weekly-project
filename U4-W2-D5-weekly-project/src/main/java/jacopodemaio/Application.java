@@ -36,11 +36,9 @@ public class Application {
         System.out.println("----Rimuovere dall'archivio tramite il codice ISBN");
         System.out.println();
 
-//        essendo il codice isbn un random con valori troppo alti (mea culpa) ho direttamente preso il mio isbn per provare se funziona
-        archivio.removeBookFromIsbn(myBook.getISBN());
-//        System.out.println(archivio);
 
-        archivio.removeMagazineFromIsbn(myMagazine.getISBN());
+//        essendo il codice isbn un random con valori troppo alti (mea culpa) ho direttamente preso il mio isbn per provare se funziona
+        archivio.removeObjectByIsbn("Rivista", myMagazine.getISBN());
 //        System.out.println(archivio);
 
 

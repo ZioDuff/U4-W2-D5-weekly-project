@@ -57,14 +57,15 @@ public class Archivio {
         System.out.println(magazine.getTitle() + " La tua rivista è stata aggiunta");
     }
 
-    public void removeBookFromIsbn(long isbn) {
-        archivioLibri.removeIf(book -> book.getISBN() == isbn);
-        System.out.println("Libro rimosso con successo");
-    }
 
-    public void removeMagazineFromIsbn(long isbn) {
-        archivioRiviste.removeIf(magazine -> magazine.getISBN() == isbn);
-        System.out.println("Rivista eliminata con successo");
+    public void removeObjectByIsbn(String str, long isbn) {
+        if (str.equals("Libro")) {
+            archivioLibri.removeIf(e -> e.getISBN() == isbn);
+            System.out.println("Libro rimosso");
+        } else if (str.equals("Rivista")) {
+            archivioRiviste.removeIf(e -> e.getISBN() == isbn);
+            System.out.println("Rivista rimosso");
+        } else System.out.println("Non hai rimosso nulla...");
     }
 
     public void searchBookByIsbn(long isbn) {
