@@ -1,9 +1,8 @@
 package jacopodemaio.entities;
 
-import java.util.List;
 import java.util.Random;
 
-public abstract class Catalogo {
+public abstract class OggettoLibreria {
     //    ATTRIBUTI
     protected Long ISBN = new Random().nextLong(10000, 90000);
     protected String title;
@@ -11,7 +10,7 @@ public abstract class Catalogo {
     protected int numOfPages;
 //    COSTRUTTORE
 
-    public Catalogo(String title, int yearPublication, int numOfPages) {
+    public OggettoLibreria(String title, int yearPublication, int numOfPages) {
 
         this.title = title;
         this.yearPublication = yearPublication;
@@ -50,32 +49,6 @@ public abstract class Catalogo {
 
     public void setNumOfPages(int numOfPages) {
         this.numOfPages = numOfPages;
-    }
-
-
-    public void addElement(List<Libri> lista, Libri obj) {
-        lista.add(obj);
-
-    }
-
-
-    public void removeFromIsbn() {
-
-    }
-
-
-    public void searchByIsbn() {
-
-    }
-
-
-    public void searchByYear() {
-
-    }
-
-
-    public void searchByAuthors() {
-
     }
 
 

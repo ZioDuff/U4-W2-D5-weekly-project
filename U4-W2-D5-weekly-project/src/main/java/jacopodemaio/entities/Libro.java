@@ -1,13 +1,13 @@
 package jacopodemaio.entities;
 
 
-public class Libri extends Catalogo {
+public class Libro extends OggettoLibreria {
     //    ATTRIBUTI
     private String authors;
     private String type;
 //    COSTRUTTORE
 
-    public Libri(String title, int yearPublication, int numOfPages, String authors, String type) {
+    public Libro(String title, int yearPublication, int numOfPages, String authors, String type) {
         super(title, yearPublication, numOfPages);
         this.authors = authors;
         this.type = type;

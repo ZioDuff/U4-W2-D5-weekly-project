@@ -2,17 +2,26 @@ package jacopodemaio.entities;
 
 import jacopodemaio.enums.Periodicità;
 
-public class Riviste extends Catalogo {
+import java.util.Random;
+
+public class Rivista extends OggettoLibreria {
     //    ATTRIBUTI
     private Periodicità periodicità;
     //    COSTRUTTORE
 
-    public Riviste(String title, int yearPublication, int numOfPages, Periodicità periodicità) {
+    public Rivista(String title, int yearPublication, int numOfPages, Periodicità periodicità) {
         super(title, yearPublication, numOfPages);
         this.periodicità = periodicità;
     }
 
     //    METODI
+
+    public static Periodicità getRandomPeriods() {
+        Periodicità[] periods = Periodicità.values();
+        Random rndm = new Random();
+        int index = rndm.nextInt(periods.length);
+        return periods[index];
+    }
 
     public Periodicità getPeridiodicità() {
         return periodicità;
