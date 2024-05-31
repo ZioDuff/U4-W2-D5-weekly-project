@@ -44,6 +44,25 @@ public class Application {
 //        System.out.println(archivio);
 
 
+//        stesso discorso per l'esercizio di prima
+        System.out.println("----Ricerca per ISBN----");
+        System.out.println();
+
+        archivio.searchBookByIsbn(myBook.getISBN());
+
+        archivio.searchMagazineByIsbn(myMagazine.getISBN());
+
+
+        System.out.println("----Ricerca per anno----");
+
+
+        archivio.groupingBooksByYear(1999);
+
+        archivio.groupingMagazineByYear(2004);
+
+        System.out.println();
+
+
     }
 
 

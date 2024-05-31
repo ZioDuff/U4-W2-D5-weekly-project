@@ -4,8 +4,10 @@ import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Archivio {
     //    ATTRIBUTI
@@ -23,7 +25,7 @@ public class Archivio {
     //    qui vado a generare i le liste di libri e riviste con dei metodi
     public static void generateBooks(int total, List<OggettoLibreria> archivioLibri) {
         Faker faker = new Faker();
-        Supplier<Libro> booksSupplier = () -> new Libro(faker.book().title(), faker.number().numberBetween(1800, 2024), faker.number().numberBetween(80, 2000), faker.book().author(), faker.book().genre());
+        Supplier<Libro> booksSupplier = () -> new Libro(faker.book().title(), faker.number().numberBetween(2000, 2024), faker.number().numberBetween(80, 2000), faker.book().author(), faker.book().genre());
         for (int i = 0; i < 10; i++) {
             archivioLibri.add(booksSupplier.get());
         }
@@ -65,15 +67,38 @@ public class Archivio {
         System.out.println("Rivista eliminata con successo");
     }
 
-    public void seachBookByIsbn(long isbn) {
+    public void searchBookByIsbn(long isbn) {
         Optional<OggettoLibreria> bookFounded = archivioLibri.stream().filter(book -> book.getISBN() == isbn).findFirst();
         if (bookFounded.isPresent()) {
-            System.out.println("trovato" + bookFounded.get());
+            System.out.println("trovato " + bookFounded.get());
         } else {
             System.out.println("non trovato");
         }
     }
 
+    public void searchMagazineByIsbn(long isbn) {
+        Optional<OggettoLibreria> magazineFounded = archivioRiviste.stream().filter(book -> book.getISBN() == isbn).findFirst();
+        if (magazineFounded.isPresent()) {
+            System.out.println("trovato " + magazineFounded.get());
+        } else {
+            System.out.println("non trovato");
+        }
+    }
+
+    public void groupingBooksByYear(int year) {
+        Map<String, List<OggettoLibreria>> booksByYear = archivioLibri.stream().filter(book -> book.getYearPublication() == year).collect(Collectors.groupingBy(book -> book.getTitle()));
+        if (booksByYear.isEmpty()) {
+            System.out.println("Nessun libro per l'anno " + year);
+        } else booksByYear.forEach((yearPublication, title) -> System.out.println("anno " + year + " titolo " + title));
+    }
+
+    public void groupingMagazineByYear(int year) {
+        Map<String, List<OggettoLibreria>> magazineByYear = archivioRiviste.stream().filter(magazine -> magazine.getYearPublication() == year).collect(Collectors.groupingBy(magazine -> magazine.getTitle()));
+        if (magazineByYear.isEmpty()) {
+            System.out.println("Nessun libro per l'anno " + year);
+        } else
+            magazineByYear.forEach((yearPublication, title) -> System.out.println("anno " + year + " titolo " + title));
+    }
 
     @Override
     public String toString() {
