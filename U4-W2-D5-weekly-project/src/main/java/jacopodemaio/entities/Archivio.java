@@ -90,15 +90,21 @@ public class Archivio {
         Map<String, List<OggettoLibreria>> booksByYear = archivioLibri.stream().filter(book -> book.getYearPublication() == year).collect(Collectors.groupingBy(book -> book.getTitle()));
         if (booksByYear.isEmpty()) {
             System.out.println("Nessun libro per l'anno " + year);
-        } else booksByYear.forEach((yearPublication, title) -> System.out.println("anno " + year + " titolo " + title));
+        } else {
+            System.out.println("queste sono i libri in base a l'anno cercato:");
+            booksByYear.forEach((yearPublication, title) -> System.out.println("anno " + year + " " + title));
+        }
     }
 
     public void groupingMagazineByYear(int year) {
         Map<String, List<OggettoLibreria>> magazineByYear = archivioRiviste.stream().filter(magazine -> magazine.getYearPublication() == year).collect(Collectors.groupingBy(magazine -> magazine.getTitle()));
         if (magazineByYear.isEmpty()) {
-            System.out.println("Nessun libro per l'anno " + year);
-        } else
-            magazineByYear.forEach((yearPublication, title) -> System.out.println("anno " + year + " titolo " + title));
+            System.out.println("Nessuna rivista per l'anno " + year);
+        } else {
+            System.out.println("queste sono le riviste in base a l'anno cercato:");
+            magazineByYear.forEach((yearPublication, title) -> System.out.println("anno " + year + " " + title));
+
+        }
     }
 
     @Override
